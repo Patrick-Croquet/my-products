@@ -1,0 +1,94 @@
+<html><head><base href="http://127.0.0.1:5500/about.html">
+<title>About Vue.js Robot Products</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('images/futuristic-building.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    text-align: center;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+}
+nav {
+    margin-top: 10px;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #35495e;
+}
+nav a.active {
+    color: #42b883;
+}
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.about-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 800px;
+}
+h1 {
+    color: #35495e;
+    margin-bottom: 20px;
+}
+p {
+    color: #35495e;
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<div id="app" class="app-container">
+    <header>
+        <svg class="logo" viewBox="0 0 128 128" width="100" height="100">
+            <path d="M0 8.934l49.854.158 14.167 24.47 14.432-24.47L128 8.935l-63.834 110.14zm126.98.637l-24.36.02-38.476 66.053L25.691 9.592.942 9.572l63.211 107.89zm-25.149-.008l-22.745.168-15.053 24.647L49.216 9.73l-22.794-.168 37.731 64.476zm-75.834-.17l23.002.009m-23.002-.01l23.002.01" fill="none" stroke="#35495e"/>
+            <path d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z" fill="#35495e"/>
+            <path d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401h25.11L64.167 119.13z" fill="#41b883"/>
+        </svg>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about.html" class="active">About</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="about-container">
+            <h1>{{ pageTitle }}</h1>
+            <p>{{ description }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        pageTitle: 'About Our Robot Products',
+        description: 'Welcome to our futuristic robot product line! We specialize in creating innovative, high-quality robots designed to make your life easier and more enjoyable. From robot clocks that wake you up with a smile to intelligent vacuum cleaners that keep your home spotless, our products combine cutting-edge technology with user-friendly design. Our team of engineers and designers work tirelessly to bring you the latest advancements in robotics, ensuring that each product meets the highest standards of quality and functionality. Whether you\'re a tech enthusiast or simply looking for smart solutions to everyday challenges, our robot products are here to assist and amaze you. Explore our range and step into the future of home automation and robotic companionship!'
+    }
+})
+</script>
+</body></html>

@@ -1,0 +1,134 @@
+<html><head><base href="http://127.0.0.1:5500/">
+<title>Vue.js Product Showcase</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('images/futuristic-building.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    text-align: center;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+}
+nav {
+    margin-top: 10px;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #35495e;
+}
+nav a.active {
+    color: #42b883;
+}
+.content {
+    display: flex;
+    flex-grow: 1;
+    padding: 20px;
+}
+.column {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px;
+    border-radius: 10px;
+}
+.product {
+    display: flex;
+    margin-bottom: 20px;
+}
+.product img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.product-info h3 {
+    margin: 0;
+    color: #35495e;
+}
+.product-info p {
+    color: #42b883;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+    .product {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .product img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+</style>
+</head>
+<body>
+<div id="app" class="app-container">
+    <header>
+        <svg class="logo" viewBox="0 0 128 128" width="100" height="100">
+            <path d="M0 8.934l49.854.158 14.167 24.47 14.432-24.47L128 8.935l-63.834 110.14zm126.98.637l-24.36.02-38.476 66.053L25.691 9.592.942 9.572l63.211 107.89zm-25.149-.008l-22.745.168-15.053 24.647L49.216 9.73l-22.794-.168 37.731 64.476zm-75.834-.17l23.002.009m-23.002-.01l23.002.01" fill="none" stroke="#35495e"/>
+            <path d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z" fill="#35495e"/>
+            <path d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401h25.11L64.167 119.13z" fill="#41b883"/>
+        </svg>
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="column">
+            <h1>{{ pageTitle }}</h1>
+        </div>
+        <div class="column">
+            <div v-for="product in products" :key="product.id" class="product">
+                <img :src="product.image" :alt="product.name">
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.price | currencydecimal }}€</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        pageTitle: 'Mes produits',
+        products: [
+            { id: 1, name: 'Produit 1', price: 10.99, image: './images/image1.jpg' },
+            { id: 2, name: 'Produit 2', price: 15.50, image: './images/image2.jpg' },
+            { id: 3, name: 'Produit 3', price: 22.00, image: './images/image3.jpg' }
+        ]
+    },
+    filters: {
+    currencydecimal (value) {
+      return value.toFixed(2)
+    }
+  }
+})
+</script>
+</body></html>
